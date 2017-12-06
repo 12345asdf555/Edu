@@ -1,0 +1,37 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@drawable/backgroundload"
+    android:gravity="center">
+
+    <com.example.wifilisttest.ProgressWheel
+        xmlns:ProgressWheel="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/progress_bar_two2"
+        android:layout_width="320dp"
+        android:layout_height="320dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginLeft="0dp"
+        ProgressWheel:barColor="#339BB9"
+        ProgressWheel:barWidth="16dp"
+        ProgressWheel:rimColor="#44000000"
+        ProgressWheel:rimWidth="16dp"
+        ProgressWheel:spinSpeed="3dp"
+        ProgressWheel:text="正在进行连接..."
+        ProgressWheel:textColor="@color/white"
+        ProgressWheel:textSize="16sp" />
+
+    <Button
+        android:id="@+id/btn_start2"
+        android:layout_width="110dp"
+        android:layout_height="50dp"
+        android:layout_alignRight="@+id/progress_bar_two2"
+        android:layout_below="@+id/progress_bar_two2"
+        android:layout_marginRight="102dp"
+        android:layout_marginTop="29dp"
+        android:layout_weight="0.06"
+        android:background="@drawable/choosebutton1"
+        android:text="上传数据"
+        android:enabled="false"
+        android:textColor="@color/white" />
+
+</RelativeLayout>
