@@ -193,7 +193,6 @@ public class RecorderManager extends Activity{
     }  
   
     private void startRecorderActivity(Activity activity) {  
-    	activity.getWindow().getDecorView().setBackgroundResource(R.drawable.ic_launcher);
         rootView = activity.getWindow().getDecorView();  
         mUIHandler.removeCallbacks(mDrawTask);  
         mUIHandler.post(mDrawTask);  

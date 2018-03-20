@@ -28,8 +28,7 @@
     <string name="menu1_sub4">50</string>
     <string name="menu2">画笔</string>
     <string name="menu3">橡皮擦</string>
-    <string name="menu4">保存</string>
+    <string name="menu4">清屏</string>
     <string name="menu5">退出</string>
-    <string name="menu_author">作者：yongh701</string>
 
 </resources>

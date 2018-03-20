@@ -24,10 +24,12 @@ import android.widget.Toast;
 public class DrawView extends View {
 	private Bitmap cacheBitmap;// 画纸
 	public Canvas cacheCanvas;// 创建画布、画家
-	private Path path;// 绘图的路径
+	public Path path = new Path();// 绘图的路径
 	public Paint paint;// 画笔
-	private float preX, preY;// 之前的XY的位置，用于下面的手势移动
-	private int view_width, view_height;
+	public float preX, preY;// 之前的XY的位置，用于下面的手势移动
+	public float x;
+	public float y;
+	public int view_width, view_height;
 
 	public DrawView(Context context, AttributeSet attrs) {
 		super(context, attrs);
@@ -47,6 +49,8 @@ public class DrawView extends View {
 
 	}
 
+	
+	
 	@Override
 	protected void onDraw(Canvas canvas) {
 		super.onDraw(canvas);
@@ -64,13 +68,53 @@ public class DrawView extends View {
         invalidate();
     }
 	
+	/*public void draw(float x, float y, int type){
+		
+		switch (type) {// 获取触摸的各个瞬间
+		
+		case 1:// 手势按下
+			path.moveTo(x, y);// 绘图的起始点
+			preX = x;
+			preY = y;
+			break;
+			
+		case 2:
+			float dx = Math.abs(x - preX);
+			float dy = Math.abs(y - preY);
+			if (dx > 5 || dy > 5) {// 用户要移动超过5像素才算是画图，免得手滑、手抖现象
+				path.quadTo(preX, preY, (x + preX) / 2, (y + preY) / 2);
+				preX = x;
+				preY = y;
+				cacheCanvas.drawPath(path, paint);// 绘制路径
+			}
+			break;
+			
+		case 3:
+			path.reset();
+			break;
+			
+		}
+		invalidate();
+	}*/
+	
+	
 	@Override
-	public boolean onTouchEvent(MotionEvent event) {
+	public boolean dispatchTouchEvent(MotionEvent ev) {
+		return super.dispatchTouchEvent(ev);
+	}
+
+	public boolean onInterceptTouchEvent(MotionEvent ev) {
+		boolean bo = false;
+		return bo;
+	}
+	
+	@Override
+	public boolean onTouchEvent(MotionEvent ev) {
 
 		// 获取触摸位置
-		float x = event.getX();
-		float y = event.getY();
-		switch (event.getAction()) {// 获取触摸的各个瞬间
+		x = ev.getX();
+		y = ev.getY();
+		switch (ev.getAction()) {// 获取触摸的各个瞬间
 		case MotionEvent.ACTION_DOWN:// 手势按下
 			path.moveTo(x, y);// 绘图的起始点
 			preX = x;
@@ -79,7 +123,7 @@ public class DrawView extends View {
 		case MotionEvent.ACTION_MOVE:
 			float dx = Math.abs(x - preX);
 			float dy = Math.abs(y - preY);
-			if (dx > 5 || dy > 5) {// 用户要移动超过5像素才算是画图，免得手滑、手抖现象
+			if (dx > 10 || dy > 10) {// 用户要移动超过5像素才算是画图，免得手滑、手抖现象
 				path.quadTo(preX, preY, (x + preX) / 2, (y + preY) / 2);
 				preX = x;
 				preY = y;
@@ -114,5 +158,7 @@ public class DrawView extends View {
 				Toast.LENGTH_SHORT).show();
 
 	}
+	
+
 
 }

@@ -30,6 +30,5 @@
     <item
         android:id="@+id/menu5"
         android:title="@string/menu5"/>
-    <item android:title="@string/menu_author"/>
 
 </menu>
